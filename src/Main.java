@@ -3,14 +3,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.function.Consumer;
 import java.util.regex.Pattern;
 
 class Solution {
 
     private static class ConcordanceData {
         private int frequency;
-        private List<Integer> occurrenceInSentenceNum;
+        private final List<Integer> occurrenceInSentenceNum;
 
         public ConcordanceData(int occurrence) {
             this.occurrenceInSentenceNum = new ArrayList<>();
@@ -30,22 +29,16 @@ class Solution {
         public String toString() {
             StringBuilder sb = new StringBuilder();
             sb.append(occurrenceInSentenceNum.get(0));
-            occurrenceInSentenceNum.stream().skip(1).forEach((i) -> {
-                sb.append(", ").append(i);
-            });
-            return "{" + frequency + " : " + sb.toString() + "}";
+            occurrenceInSentenceNum.stream().skip(1).forEach((i) -> sb.append(", ").append(i));
+            return "{" + frequency + " : " + sb + "}";
         }
     }
 
     private static TreeMap<String, ConcordanceData> concordance(String text) {
-        TreeMap<String, ConcordanceData> concordanceCounter = new TreeMap<>(new Comparator<String>() {
-            @Override
-            public int compare(String s1, String s2) {
-                return s1.compareToIgnoreCase(s2);
-            }
-        });
-        Pattern SENTENCE_SPLIT_REGEX = Pattern.compile("(([!\\.?])$)|\\.(?=\\s[A-Z])");
-        String[] sentences = SENTENCE_SPLIT_REGEX.split(text);;
+        TreeMap<String, ConcordanceData> concordanceCounter = new TreeMap<>(String::compareToIgnoreCase);
+        //regex to handle abbrievations such as i.e.
+        Pattern SENTENCE_SPLIT_REGEX = Pattern.compile("(([!.?])$)|\\.(?=\\s[A-Z])");
+        String[] sentences = SENTENCE_SPLIT_REGEX.split(text);
         int currentSentenceNum = 1;
         for (String s: sentences) {
             Pattern WORD_SPLIT_REGEX = Pattern.compile("[!?:,\\s]|\\.(?=\\s[a-z])");
@@ -71,7 +64,7 @@ class Solution {
         StringBuilder fileData = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             char[] buf = new char[1024];
-            int numRead = 0;
+            int numRead;
             while ((numRead = reader.read(buf)) != -1) {
                 String readData = String.valueOf(buf, 0, numRead);
                 fileData.append(readData);
@@ -84,11 +77,6 @@ class Solution {
         String text = readFileAsString(String.valueOf(Paths.get( System.getProperty("user.dir"), "/src/TextDocument.txt")));
         TreeMap<String, ConcordanceData> test = concordance(text);
         Set<Map.Entry<String, ConcordanceData>> sortedSet = test.entrySet();
-        sortedSet.forEach(new Consumer<Map.Entry<String, ConcordanceData>>() {
-            @Override
-            public void accept(Map.Entry<String, ConcordanceData> stringConcordanceDataEntry) {
-                System.out.printf("%-15s %50s\n", stringConcordanceDataEntry.getKey(), stringConcordanceDataEntry.getValue().toString());
-            }
-        });
+        sortedSet.forEach(stringConcordanceDataEntry -> System.out.printf("%-15s %50s\n", stringConcordanceDataEntry.getKey(), stringConcordanceDataEntry.getValue().toString()));
     }
 }
