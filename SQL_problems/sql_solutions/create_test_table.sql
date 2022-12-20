@@ -26,7 +26,7 @@ VALUES
 (1, 'John', NULL, 'Doe', '1980-01-01', '2010-01-01', 'A'),
 (2, 'Jane', 'Janey', 'Doe', '1985-06-15', '2012-04-01', 'B'),
 (3, 'Bob', 'Bobby', 'Smith', '1970-09-01', '2005-03-15', NULL),
-(4, 'Yifan', 'Ethan', 'Li', '1995-01-01', '2010-01-01', 'A');
+(4, 'Yifan', 'Ethan', 'Li', '1995-01-01', '2022-12-18', 'A');
 
 INSERT INTO ADDRESS (address_id, person_id, address_type, street_line_1, city, state, zip_code)
 SELECT 1, person_id, 'HOME', '123 Main St', 'Phoenix', 'AZ', '12345'

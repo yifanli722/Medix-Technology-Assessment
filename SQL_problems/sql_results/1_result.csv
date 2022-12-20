@@ -1,0 +1,5 @@
+"person_id","reporting_name","last_name","date_of_birth","hire_date","occupation"
+1,"John","Doe","1980-01-01","2010-01-01","A"
+2,"Janey","Doe","1985-06-15","2012-04-01","B"
+3,"Bobby","Smith","1970-09-01","2005-03-15",NULL
+4,"Ethan","Li","1995-01-01","2010-01-01","A"
