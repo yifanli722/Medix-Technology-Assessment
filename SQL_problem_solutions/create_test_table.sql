@@ -17,10 +17,9 @@ CREATE TABLE address (
   city VARCHAR(100),
   state VARCHAR(100),
   zip_code VARCHAR(30)
-  CONSTRAINT fk_person
-    FOREIGN KEY(person_id)
-        REFERENCES person(person_id)
 );
+
+CREATE INDEX person_id_index ON addresses (person_id);
 
 INSERT INTO person (person_id, first_name, preferred_first_name, last_name, date_of_birth, hire_date, occupation)
 VALUES
