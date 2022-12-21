@@ -44,11 +44,16 @@ FROM person
 WHERE person_id = 2;
 
 INSERT INTO ADDRESS (address_id, person_id, address_type, street_line_1, city, state, zip_code)
-SELECT 4, person_id, 'WORK', '789 Maple Ave', 'Nebraska City', 'NE', '98765'
+SELECT 4, person_id, 'BILL', '123 Main St', 'Phoenix', 'AZ', '12345'
+FROM person
+WHERE person_id = 1;
+
+INSERT INTO ADDRESS (address_id, person_id, address_type, street_line_1, city, state, zip_code)
+SELECT 5, person_id, 'WORK', '789 Maple Ave', 'Nebraska City', 'NE', '98765'
 FROM person
 WHERE person_id = 3;
 
 INSERT INTO ADDRESS (address_id, person_id, address_type, street_line_1, city, state, zip_code)
-SELECT 5, person_id, 'WORK', '321 Elm St', 'Hello', 'World', '11223'
+SELECT 6, person_id, 'WORK', '321 Elm St', 'Hello', 'World', '11223'
 FROM person
 WHERE person_id = 4;
