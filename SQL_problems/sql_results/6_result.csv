@@ -1,0 +1,5 @@
+"first_name","last_name","address_type","street_line_1","city","state","zip_code"
+"Jane","Doe","BILL","89 Lyon Circle","Clifton","VA","54321"
+"John","Doe","BILL","123 Main St","Phoenix","AZ","12345"
+"Bob","Smith","NONE",NULL,NULL,NULL,NULL
+"Yifan","Li","NONE",NULL,NULL,NULL,NULL
