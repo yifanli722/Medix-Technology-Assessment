@@ -1,0 +1,5 @@
+"person_id","first_name","preferred_first_name","last_name","date_of_birth","hire_date","occupation"
+1,"John",NULL,"Doe","1980-01-01","2010-01-01","X"
+2,"Jane","Janey","Doe","1985-06-15","2012-04-01","X"
+3,"Bob","Bobby","Smith","1970-09-01","2005-03-15",NULL
+4,"Yifan","Ethan","Li","1995-01-01","2022-12-18","A"
